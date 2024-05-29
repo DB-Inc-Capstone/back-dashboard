@@ -1,7 +1,5 @@
 package kr.co.dbinc.dto;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.Getter;
