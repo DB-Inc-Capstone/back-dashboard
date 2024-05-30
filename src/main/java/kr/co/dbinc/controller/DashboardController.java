@@ -3,6 +3,8 @@ package kr.co.dbinc.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -25,6 +27,8 @@ public class DashboardController {
 	@Autowired
 	private RestTemplate restTemplate;
 	
+	private final Logger logger = LogManager.getFormatterLogger(this.getClass());
+	
 	@Value("${API_GATEWAY_URL}")
 	private String url;
 	
@@ -34,6 +38,9 @@ public class DashboardController {
 	@GetMapping("/totalwork")
 	//ResponseEntity<ResponseDTO>
 	public ResponseEntity<ResponseDTO> getTotalWork() {
+		
+		logger.info("getTotalWork 호출");
+		
 		ResponseDTO response = new ResponseDTO();
 		System.out.println(url);
 		
@@ -72,6 +79,9 @@ public class DashboardController {
 	 */
 	@GetMapping("/totalwork/worker/{workerID}")
 	public ResponseEntity<ResponseDTO> getTotalWorkByWorker(@PathVariable Long workerID) {
+		
+		logger.info("getTotalWorkByWorker 호출");
+		
 		ResponseDTO response = new ResponseDTO();
 		
 		ResponseDTO_receive response_receive = restTemplate.getForObject(url + "/work", ResponseDTO_receive.class);
@@ -108,6 +118,8 @@ public class DashboardController {
 	 */
 	@GetMapping("/totalissue")
 	public ResponseEntity<ResponseDTO> getTotalIssue() {
+		
+		logger.info("getTotalIssue 호출");
 		
 		ResponseDTO response = new ResponseDTO();
 		System.out.println(url);
@@ -148,6 +160,9 @@ public class DashboardController {
 	 */
 	@GetMapping("/totalissue/worker/{workerID}")
 	public ResponseEntity<ResponseDTO> getTotalIssueByWorker(@PathVariable Long workerID) {
+		
+		logger.info("getTotalIssueByWorker 호출");
+		
 		ResponseDTO response = new ResponseDTO();
 		
 		ResponseDTO_receive response_receive = restTemplate.getForObject(url + "/work/issue", ResponseDTO_receive.class);

@@ -7,9 +7,9 @@ spring:
   application:
     name:
       back-dashboard
-  #zipkin:
-  #  #base-url: http://localhost:9412
-  #  base-url: http://ec2-43-203-124-16.ap-northeast-2.compute.amazonaws.com:9411/
+      
+  zipkin:
+    base-url: http://localhost:9412
 
 eureka:
   instance:
